@@ -1,4 +1,3 @@
-Certainly! A detailed `README.md` file is essential for providing instructions on how to set up, train, and deploy your machine learning application. Below is a comprehensive `README.md` file for your Heart Attack Risk Assessment project using Random Forest, Logistic Regression, and MLP classifiers, deployed with Streamlit and Flask.
 
 ### README.md
 
