@@ -4,7 +4,8 @@
 ```markdown
 # Heart Attack Risk Assessment
 
-This project aims to develop a machine learning model to predict the risk of heart attack based on various health metrics. The project includes model development, preprocessing, hyperparameter tuning, and deployment using Streamlit and Flask.
+This project aims to develop a machine learning model to predict the risk of heart attack based on various health metrics.
+The project includes model development, preprocessing, hyperparameter tuning, and deployment using Streamlit and Flask.
 
 ## Table of Contents
 
