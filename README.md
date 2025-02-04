@@ -47,7 +47,7 @@ age,sex,total_cholesterol,ldl,hdl,systolic_bp,diastolic_bp,smoking,diabetes,hear
 1. **Clone the Repository**
 
    ```bash
-   git clone https://github.com/yourusername/heart-attack-risk-assessment.git
+   [git clone https://github.com/yourusername/heart-attack-risk-assessment.git](https://github.com/Blessman-Newton/Heart-Attack-Risk-Assessment)
    cd heart-attack-risk-assessment
    ```
 
