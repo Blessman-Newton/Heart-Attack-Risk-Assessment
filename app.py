@@ -7,34 +7,32 @@ from sklearn.ensemble import RandomForestClassifier
 from sklearn.linear_model import LogisticRegression
 from sklearn.neural_network import MLPClassifier
 import joblib
-from dotenv import load_dotenv
-import os
-
-# Load environment variables
-load_dotenv()
-
-# Get paths from environment variables
-model_path = os.getenv('MODEL_PATH', './models')
-preprocessor_path = os.getenv('PREPROCESSOR_PATH', './preprocessors')
 
 # Load the preprocessor
-preprocessor = joblib.load(os.path.join(preprocessor_path, 'preprocessor.pkl'))
+preprocessor = joblib.load('preprocessor.pkl')
 
 # Load the models
-best_rf_model = joblib.load(os.path.join(model_path, 'best_rf_model.pkl'))
-best_lr_model = joblib.load(os.path.join(model_path, 'best_lr_model.pkl'))
-best_mlp_model = joblib.load(os.path.join(model_path, 'best_mlp_model.pkl'))
+best_rf_model = joblib.load('best_rf_model.pkl')
+best_lr_model = joblib.load('best_lr_model.pkl')
+best_mlp_model = joblib.load('best_mlp_model.pkl')
 
 # Define the preprocessing steps
-numeric_features = ['Age', 'TotalCholesterol', 'LDL', 'HDL', 'SystolicBP', 'DiastolicBP']
-categorical_features = ['Sex', 'Smoking', 'Diabetes']
+numeric_features = ['age', 'total_cholesterol', 'ldl', 'hdl', 'systolic_bp', 'diastolic_bp']
+categorical_features = ['sex', 'smoking', 'diabetes']
 
 # Function to predict using the models
 def predict(input_data):
-    input_data_preprocessed = preprocessor.transform([input_data])
+    # Convert input data to a DataFrame
+    input_df = pd.DataFrame([input_data], columns=numeric_features + categorical_features)
+    
+    # Preprocess the input data
+    input_data_preprocessed = preprocessor.transform(input_df)
+    
+    # Make predictions with the best models
     pred_rf = best_rf_model.predict(input_data_preprocessed)
     pred_lr = best_lr_model.predict(input_data_preprocessed)
     pred_mlp = best_mlp_model.predict(input_data_preprocessed)
+    
     return pred_rf[0], pred_lr[0], pred_mlp[0]
 
 # Streamlit app
